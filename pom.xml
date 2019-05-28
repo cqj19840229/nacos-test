@@ -23,6 +23,7 @@
         <module>provider-service</module>
         <module>consumer-service</module>
         <module>feign-service</module>
+        <module>sentinel-service</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -55,10 +56,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
