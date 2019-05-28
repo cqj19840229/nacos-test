@@ -24,6 +24,7 @@
         <module>consumer-service</module>
         <module>feign-service</module>
         <module>sentinel-service</module>
+        <module>gateway-service</module>
     </modules>
     <dependencyManagement>
         <dependencies>
