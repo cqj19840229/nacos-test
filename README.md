@@ -8,6 +8,7 @@
 ``4服务消费者 feign``   
 ``5断路器 sentinel``  
 ``6网关 gateway``  
+``7单点登录 oauth2``
 
 # quick start  
 1. git clone https://github.com/wotrd/nacos-test.git  
@@ -32,7 +33,8 @@
 7服务监控  
 ```参考 https://nacos.io/zh-cn/docs/monitor-guide.html```  
 8单点登录基于oauth2
-
+```oauth2.sql文件用户初始化数据库，password和secret字段需要加密。 ```
+```memory基于内存认证，jdbc基于数据库```
 
 # git分支  
 1master分支，主干分支  
