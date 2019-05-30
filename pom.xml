@@ -25,6 +25,7 @@
         <module>feign-service</module>
         <module>sentinel-service</module>
         <module>gateway-service</module>
+        <module>authserver-memory</module>
     </modules>
     <dependencyManagement>
         <dependencies>
