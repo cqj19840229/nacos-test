@@ -7,8 +7,8 @@
 ``3服务提供者 nacos``  
 ``4服务消费者 feign``   
 ``5断路器 sentinel``  
-``6网关 gateway``  
-``7单点登录 oauth2``
+``6网关     gateway``   
+``7认证授权  oauth2`` 
 
 # quick start  
 1. git clone https://github.com/wotrd/nacos-test.git  
@@ -27,14 +27,17 @@
 ```使用sentinel设置限流和降级处理，需要单独部署sentinel-dashboard面板监控。```  
 ```使用feign和sentinel需要在配置文件中开启 feign.sentinel.enabled=true 不然fallback断路不生效```   
 5网关：  
-```gateway是基于webflux实现的，不能加载mvc依赖。```   
+```gateway是基于webflux实现的，不能加载mvc依赖。```     
 6用户账户修改：  
 ```参考 https://nacos.io/en-us/docs/console-guide.html 用户登录管理```    
 7服务监控  
 ```参考 https://nacos.io/zh-cn/docs/monitor-guide.html```  
-8单点登录基于oauth2
-```oauth2.sql文件用户初始化数据库，password和secret字段需要加密。 ```
-```memory基于内存认证，jdbc基于数据库```
+8单点登录基于oauth2  
+```oauth2是一种认证授权协议，分为授权服务器，资源服务器，用户，客户端。资源服务和授权服务器可以放在一起。```  
+```资源服务器需要配置授权服务器的授权鉴权信息，用户通过客户端请求授权后，获取授权码，通过授权码请求token```    
+```携带token请求资源接口，这个可以通过网关鉴权转发。```
+```单点登录client需要配置 server.servlet.session.cookie.name=OAUTH2SESSION，不然会失败```
+9使用module项目时,主pom文件或者其它被依赖module不能打包，不然其他module找不到依赖
 
 # git分支  
 1master分支，主干分支  
