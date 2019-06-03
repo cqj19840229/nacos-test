@@ -26,6 +26,7 @@
         <module>sentinel-service</module>
         <module>gateway-service</module>
         <module>authserver-memory</module>
+        <module>authserver-jdbc</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -76,14 +77,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
