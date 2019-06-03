@@ -48,4 +48,5 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter { //è
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         endpoints.tokenStore(tokenStore());
     }
+
 }
