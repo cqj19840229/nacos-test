@@ -12,7 +12,7 @@
     <select id="queryById" resultMap="OrderMap">
         select
           id, name, price
-        from nacos_test.order
+        from order
         where id = #{id}
     </select>
 
@@ -20,7 +20,7 @@
     <select id="queryAllByLimit" resultMap="OrderMap">
         select
           id, name, price
-        from nacos_test.order
+        from order
         limit #{offset}, #{limit}
     </select>
 
@@ -28,18 +28,18 @@
     <select id="queryAll" resultMap="OrderMap">
         select
           id, name, price
-        from nacos_test.order
+        from order
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into nacos_test.order(name, price)
+        insert into order(name, price)
         values (#{name}, #{price})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update nacos_test.order
+        update order
         <set>
             <if test="name != null and name != ''">
                 name = #{name},
@@ -53,7 +53,7 @@
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from nacos_test.order where id = #{id}
+        delete from order where id = #{id}
     </delete>
 
 </mapper>

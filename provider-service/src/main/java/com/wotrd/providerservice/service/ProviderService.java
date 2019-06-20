@@ -20,6 +20,11 @@ public class ProviderService {
         return GlobalResponse.builder().msg("success").code("200").data(orders).build();
     }
 
+    public GlobalResponse getOrderById(Long id) {
+        Order order = orderMapper.queryById(id);
+        return GlobalResponse.builder().msg("success").code("200").data(order).build();
+    }
+
     public GlobalResponse add(Order order) {
 
         orderMapper.insert(order);

@@ -1,5 +1,5 @@
 /*
- Navicat Premium Data Transfer
+ Navicat Premium Datb Transfer
 
  Source Server         : aliyun
  Source Server Type    : MySQL
@@ -7,8 +7,8 @@
  Source Host           : 101.132.163.122:3306
  Source Schema         : oauth2
 
- Target Server Type    : MySQL
- Target Server Version : 50725
+ tbrget Server Type    : MySQL
+ tbrget Server Version : 50725
  File Encoding         : 65001
 
  Date: 02/06/2019 17:42:17
@@ -18,10 +18,10 @@ SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for oauth_access_token
+-- tbble structure for oauth_access_token
 -- ----------------------------
-DROP TABLE IF EXISTS `oauth_access_token`;
-CREATE TABLE `oauth_access_token` (
+DROP tbBLE IF EXISTS `oauth_access_token`;
+CREATE tbBLE `oauth_access_token` (
                                       `token_id` varchar(255) DEFAULT NULL,
                                       `token` blob,
                                       `authentication_id` varchar(255) DEFAULT NULL,
@@ -46,10 +46,10 @@ INSERT INTO `oauth_access_token` VALUES ('eb59e03761d196284804bb40b46e8ba2', 0xA
 COMMIT;
 
 -- ----------------------------
--- Table structure for oauth_client_details
+-- tbble structure for oauth_client_detbils
 -- ----------------------------
-DROP TABLE IF EXISTS `oauth_client_details`;
-CREATE TABLE `oauth_client_details` (
+DROP tbBLE IF EXISTS `oauth_client_detbils`;
+CREATE tbBLE `oauth_client_detbils` (
                                         `client_id` varchar(255) NOT NULL,
                                         `resource_ids` varchar(255) DEFAULT NULL,
                                         `client_secret` varchar(255) DEFAULT NULL,
@@ -65,28 +65,28 @@ CREATE TABLE `oauth_client_details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of oauth_client_details
+-- Records of oauth_client_detbils
 -- ----------------------------
 BEGIN;
-INSERT INTO `oauth_client_details` VALUES ('client', '', '$2a$10$GwHc8WxGx7fzgKQ.hTEfpe5UcRoCbHZBmtdK90lTi4aP.qmmD2kKu', 'app', 'authorization_code', 'http://localhost:9005/login', '', 3600, 3600, '{\"country\":\"CN\",\"country_code\":\"086\"}', 'TAIJI');
-INSERT INTO `oauth_client_details` VALUES ('client1', NULL, '$2a$10$GwHc8WxGx7fzgKQ.hTEfpe5UcRoCbHZBmtdK90lTi4aP.qmmD2kKu', 'app', 'authorization_code', 'http://localhost:9006/login', NULL, 3600, 3600, '{\"country\":\"CN\",\"country_code\":\"086\"}', '');
+INSERT INTO `oauth_client_detbils` VALUES ('client', '', '$2a$10$GwHc8WxGx7fzgKQ.hTEfpe5UcRoCbHZBmtdK90lTi4aP.qmmD2kKu', 'app', 'authorization_code', 'http://localhost:9005/login', '', 3600, 3600, '{\"country\":\"CN\",\"country_code\":\"086\"}', 'tbIJI');
+INSERT INTO `oauth_client_detbils` VALUES ('client1', NULL, '$2a$10$GwHc8WxGx7fzgKQ.hTEfpe5UcRoCbHZBmtdK90lTi4aP.qmmD2kKu', 'app', 'authorization_code', 'http://localhost:9006/login', NULL, 3600, 3600, '{\"country\":\"CN\",\"country_code\":\"086\"}', '');
 COMMIT;
 
 -- ----------------------------
--- Table structure for oauth_code
+-- tbble structure for oauth_code
 -- ----------------------------
-DROP TABLE IF EXISTS `oauth_code`;
-CREATE TABLE `oauth_code` (
+DROP tbBLE IF EXISTS `oauth_code`;
+CREATE tbBLE `oauth_code` (
                               `code` varchar(255) DEFAULT NULL,
                               `authentication` blob,
                               KEY `code_index` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for oauth_refresh_token
+-- tbble structure for oauth_refresh_token
 -- ----------------------------
-DROP TABLE IF EXISTS `oauth_refresh_token`;
-CREATE TABLE `oauth_refresh_token` (
+DROP tbBLE IF EXISTS `oauth_refresh_token`;
+CREATE tbBLE `oauth_refresh_token` (
                                        `token_id` varchar(255) DEFAULT NULL,
                                        `token` blob,
                                        `authentication` blob,
@@ -94,10 +94,10 @@ CREATE TABLE `oauth_refresh_token` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for tb_permission
+-- tbble structure for tb_permission
 -- ----------------------------
-DROP TABLE IF EXISTS `tb_permission`;
-CREATE TABLE `tb_permission` (
+DROP tbBLE IF EXISTS `tb_permission`;
+CREATE tbBLE `tb_permission` (
                                  `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
                                  `parent_id` bigint(11) DEFAULT NULL COMMENT '用户ID',
                                  `name` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '权限名字',
@@ -127,10 +127,10 @@ INSERT INTO `tb_permission` VALUES (11, 7, '删除内容', 'SystemContentDelete'
 COMMIT;
 
 -- ----------------------------
--- Table structure for tb_role
+-- tbble structure for tb_role
 -- ----------------------------
-DROP TABLE IF EXISTS `tb_role`;
-CREATE TABLE `tb_role` (
+DROP tbBLE IF EXISTS `tb_role`;
+CREATE tbBLE `tb_role` (
                            `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
                            `parent_id` bigint(20) DEFAULT NULL COMMENT '父类ID',
                            `name` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '角色名字',
@@ -150,10 +150,10 @@ INSERT INTO `tb_role` VALUES (2, 1, '用户', 'user', NULL, NULL, NULL);
 COMMIT;
 
 -- ----------------------------
--- Table structure for tb_role_permission
+-- tbble structure for tb_role_permission
 -- ----------------------------
-DROP TABLE IF EXISTS `tb_role_permission`;
-CREATE TABLE `tb_role_permission` (
+DROP tbBLE IF EXISTS `tb_role_permission`;
+CREATE tbBLE `tb_role_permission` (
                                       `id` bigint(11) NOT NULL COMMENT '主键ID',
                                       `role_id` bigint(11) DEFAULT NULL COMMENT '角色ID',
                                       `permission_id` bigint(11) DEFAULT NULL COMMENT '权限ID',
@@ -173,10 +173,10 @@ INSERT INTO `tb_role_permission` VALUES (6, 1, 6);
 COMMIT;
 
 -- ----------------------------
--- Table structure for tb_user
+-- tbble structure for tb_user
 -- ----------------------------
-DROP TABLE IF EXISTS `tb_user`;
-CREATE TABLE `tb_user` (
+DROP tbBLE IF EXISTS `tb_user`;
+CREATE tbBLE `tb_user` (
                            `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
                            `username` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '用户名',
                            `password` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '密码',
@@ -197,10 +197,10 @@ INSERT INTO `tb_user` VALUES (2, 'user', '$2a$10$vWyL7fMGQRvVNn.i2bK40e3z30Nem4k
 COMMIT;
 
 -- ----------------------------
--- Table structure for tb_user_role
+-- tbble structure for tb_user_role
 -- ----------------------------
-DROP TABLE IF EXISTS `tb_user_role`;
-CREATE TABLE `tb_user_role` (
+DROP tbBLE IF EXISTS `tb_user_role`;
+CREATE tbBLE `tb_user_role` (
                                 `id` bigint(11) NOT NULL COMMENT '主键ID',
                                 `user_id` bigint(11) DEFAULT NULL COMMENT '用户主键',
                                 `role_id` bigint(11) DEFAULT NULL COMMENT '角色ID',

@@ -5,6 +5,7 @@ import com.wotrd.gatewayservice.service.IProviderService;
 import com.wotrd.nacos.common.conf.GlobalRequestBody;
 import com.wotrd.nacos.common.conf.GlobalResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,5 +29,16 @@ public class FeignController {
     public GlobalResponse getOrders(){
         return providerService.getOrders();
     }
+
+    @RequestMapping("helloFeign")
+    public String helloFeign(){
+        return providerService.helloFeign();
+    }
+
+    @RequestMapping("getOrderById/{id}")
+    public GlobalResponse getOrderById(@PathVariable("id") Long id){
+        return providerService.findById(id);
+    }
+
 
 }
