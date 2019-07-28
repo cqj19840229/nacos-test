@@ -1,0 +1,50 @@
+package com.wotrd.feignservice.service.fallback;
+
+import com.wotrd.feignservice.domain.Order;
+import com.wotrd.feignservice.service.IProviderService;
+import com.wotrd.nacos.common.conf.GlobalRequestBody;
+import com.wotrd.nacos.common.conf.GlobalResponse;
+import feign.hystrix.FallbackFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
+@Slf4j
+@Component
+public class ProviderfallbackFactory implements FallbackFactory {
+
+
+    @Override
+    public Object create(Throwable throwable) {
+        log.error(throwable.getMessage(), throwable);
+        return new ProviderFallbackService();
+    }
+
+    class ProviderFallbackService implements IProviderService {
+
+        @Override
+        public GlobalResponse addOrer(GlobalRequestBody<Order> body) {
+            return GlobalResponse.builder().code("500").msg("add order failed").build();
+        }
+
+        @Override
+        public GlobalResponse getOrders() {
+            log.error("failed");
+            return GlobalResponse.builder().code("500").msg("get orders failed").build();
+        }
+
+        @Override
+        public String helloFeign() {
+            return "hello down";
+        }
+
+        @Override
+        public String feignRetry() {
+            return "feign-retry down";
+        }
+
+        @Override
+        public GlobalResponse findById(Long id) {
+            return null;
+        }
+    }
+}
