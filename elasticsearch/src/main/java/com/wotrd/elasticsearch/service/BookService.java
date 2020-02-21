@@ -4,11 +4,14 @@ package com.wotrd.elasticsearch.service;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.util.ArrayIterator;
 import com.wotrd.elasticsearch.dao.BookRepository;
+import com.wotrd.elasticsearch.dao.OrgStructureRepository;
+import com.wotrd.elasticsearch.dao.UserRepository;
 import com.wotrd.elasticsearch.model.entity.BookDO;
+import com.wotrd.elasticsearch.model.entity.OrgStructureDO;
+import com.wotrd.elasticsearch.model.entity.UserDO;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.sort.SortBuilders;
-import org.elasticsearch.search.sort.SortOrder;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,8 +20,7 @@ import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * elasticsearch中本没有修改，它是先删除再新增
@@ -62,6 +64,9 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
+    @Autowired
+    private OrgStructureRepository orgStructureRepository;
+
     /**
      * 保存图书
      *
@@ -69,8 +74,11 @@ public class BookService {
      * @return
      */
     public BookDO save(BookDO bookDO) {
-        BookDO result = bookRepository.save(bookDO);
-        return result;
+
+//        OrgStructureDO structureDO = orgStructureRepository.findOrgStructureDOById("331081-S000026-Y0007-20160011");
+//        List<OrgStructureDO> orgStructureDOS = orgStructureRepository.findByOrgIdAndIsDelete("331081-S000026", "0");
+        BookDO save = bookRepository.save(bookDO);
+        return null;
     }
 
     /**

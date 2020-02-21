@@ -1,5 +1,9 @@
 package com.wotrd.kafkatemplate.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.wotrd.kafkatemplate.domain.QuestionDO;
+import com.wotrd.kafkatemplate.mapper.QuesttionMapper;
+import com.wotrd.kafkatemplate.utils.OkHttp3Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.PartitionInfo;
 import org.springframework.kafka.core.KafkaOperations;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -28,6 +33,31 @@ public class KafkaController {
 
     @Resource
     private KafkaTemplate<String, String> kafkaTemplate;
+
+    @Resource
+    private QuesttionMapper mapper;
+
+    /**
+     * 发送消息
+     *
+     * @return
+     */
+    @RequestMapping("send")
+    public String send() {
+        List<QuestionDO> questionDOS = mapper.queryAll();
+        questionDOS.forEach(questionDO -> {
+            JSONObject object = new JSONObject();
+            object.put("appId", "51");
+            object.put("countId", "4");
+            object.put("infoId", questionDO.getInfoId());
+            object.put("userId", questionDO.getUserId());
+            object.put("orgId", questionDO.getOrgId());
+            String s = OkHttp3Utils.postWithJsonParamasByOkHttp3("http://counter.api.xiaoyuanhao.com/counter-static/web/counter/read", object.toJSONString());
+
+        });
+        return "";
+    }
+
 
 
     /**

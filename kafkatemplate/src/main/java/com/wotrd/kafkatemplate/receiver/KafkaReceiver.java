@@ -3,7 +3,6 @@ package com.wotrd.kafkatemplate.receiver;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.annotation.TopicPartition;
@@ -30,18 +29,20 @@ import java.util.List;
 @Component
 public class KafkaReceiver {
 
-    /**
-     * id是消费者的ID
-     * topics可以监听多个topic，用逗号隔开
-     * groupId配置后，只有一个服务可以收到
-     *
-     * @param record
-     */
-    @KafkaListener(id = "consumer", topics = {"kafka"}, groupId = "marketGroup9")
-    public void receiver(ConsumerRecord<?, ?> record, KafkaConsumer consumer) {
-        log.info("record={}", record);
-
-    }
+//    /**
+//     * id是消费者的ID
+//     * topics可以监听多个topic，用逗号隔开
+//     * groupId配置后，只有一个服务可以收到
+//     *
+//     * @param record
+//     */
+//    @KafkaListener(id = "consumer", topics = {"msg_init"})
+//    public void receiver(ConsumerRecord<?, String> record, KafkaConsumer consumer) {
+//        QuestionDO test = JSONObject.parseObject(record.value(), QuestionDO.class);
+//        log.info("record={}", record);
+//        log.info("value={}", test.getName()+test.getTest());
+//
+//    }
 
     /**
      * id是消费者的ID

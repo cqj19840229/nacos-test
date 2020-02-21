@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 
 @Data
 @ToString
-@Document(indexName = "book_index", shards = 1, replicas = 0)
+@Document(indexName = "index_book11", shards = 1, replicas = 0)
 public class BookDO {
 
     @Id
@@ -22,7 +22,7 @@ public class BookDO {
      * keyword：存储数据时候，不会分词建立索引
      *
      */
-//    @Field(type = FieldType.Text, analyzer = "ik_max_word",store = true)
+    @Field(type = FieldType.Text, analyzer = "ik_max_word",store = true)
     private String name;
 
     @Field(index = false, type = FieldType.Text)
@@ -31,5 +31,7 @@ public class BookDO {
     private BigDecimal price;
 
     private String authorName;
+
+    private Object data;
 
 }
